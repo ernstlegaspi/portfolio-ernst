@@ -8,7 +8,7 @@ import Content from "./Content"
 export default function Hero() {
 	return <Canvas>
 		<color args={[0, 0, 0]} attach="background" />
-		<PerspectiveCamera makeDefault position={[0, 0, 7]} />
+		<PerspectiveCamera makeDefault position={[0, 0, 8]} />
 
 		<ambientLight />
 
@@ -20,10 +20,7 @@ export default function Hero() {
 			dampingFactor={0.03}
 			enablePan={false}
 			enableZoom={false}
-			// minAzimuthAngle={-Math.PI / 6}
-			// maxAzimuthAngle={Math.PI / 6}
-			// minPolarAngle={Math.PI / 7}
-			// maxPolarAngle={Math.PI / 2}
+			enableRotate={false}
 		/>
 	</Canvas>
 }
