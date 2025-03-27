@@ -21,25 +21,25 @@ export default function Wall() {
 
 		const onPointerLeave = () => {
 			gsap.to(matRef.current, {
-				opacity: 0.2,
+				opacity: 0.1,
 				duration: 1
 			})
 		}
 
 		if(idx % 20 === 0 && idx !== 0 && prev !== idx) {
-			y += 2.05
-			x = -2.05
+			y += 2.015
+			x = -2.015
 		}
 
 		if(idx !== 0 && prev !== idx) {
-			x += 2.05
+			x += 2.015
 		}
 
 		prev = idx
 
 		return <mesh ref={planeRef} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave} position={[(-planeWidth / 2) + (1.0 + x), (planeHeight / 2) - (1.0 + y), .01]}>
 			<planeGeometry args={[2, 2]} />
-			<meshBasicMaterial ref={matRef} transparent opacity={.2} color="#fff" />
+			<meshBasicMaterial ref={matRef} transparent opacity={.1} color="#fff" />
 			{/* <meshBasicMaterial ref={matRef} transparent opacity={.013} color="#fff" /> */}
 		</mesh>
 	}
