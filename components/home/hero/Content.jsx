@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useRef } from "react"
 import Name from "./Name"
 import ReflectionFloor from "./ReflectionFloor"
@@ -26,17 +28,15 @@ export default function Content() {
 		if(!ref.current) return
 
 		ref.current.rotation.y = MathUtils.lerp(
-			MathUtils.clamp(ref.current.rotation.y, -.52, .52),
+			MathUtils.clamp(ref.current.rotation.y, -.5, .5),
 			-pointer.x * 1,
-			.03
+			.005
 		)
 
-		console.log(ref.current.rotation.x)
-		
 		ref.current.rotation.x = MathUtils.lerp(
-			MathUtils.clamp(ref.current.rotation.x, -.035, .8),
+			MathUtils.clamp(ref.current.rotation.x, .07, .7),
 			pointer.y * 1,
-			.03
+			.005
 		)
 	})
 

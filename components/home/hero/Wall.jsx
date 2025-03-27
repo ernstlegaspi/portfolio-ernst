@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 const planeWidth = 40
 const planeHeight = 11.4
@@ -11,26 +11,17 @@ export default function Wall() {
 	const Plane = ({ idx }) => {
 		const planeRef = useRef()
 		const matRef = useRef()
-		const [hovering, setHovering] = useState(false)
 
 		const onPointerEnter = () => {
-			// if(hovering) return
-
-			// setHovering(true)
-
 			gsap.to(matRef.current, {
-				opacity: .6,
+				opacity: .75,
 				duration: 1
 			})
 		}
 
 		const onPointerLeave = () => {
-			// if(!hovering) return
-			
-			// setHovering(false)
-
 			gsap.to(matRef.current, {
-				opacity: 0.013,
+				opacity: 0.2,
 				duration: 1
 			})
 		}
@@ -48,7 +39,8 @@ export default function Wall() {
 
 		return <mesh ref={planeRef} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave} position={[(-planeWidth / 2) + (1.0 + x), (planeHeight / 2) - (1.0 + y), .01]}>
 			<planeGeometry args={[2, 2]} />
-			<meshBasicMaterial ref={matRef} transparent opacity={.013} color="#fff" />
+			<meshBasicMaterial ref={matRef} transparent opacity={.2} color="#fff" />
+			{/* <meshBasicMaterial ref={matRef} transparent opacity={.013} color="#fff" /> */}
 		</mesh>
 	}
 

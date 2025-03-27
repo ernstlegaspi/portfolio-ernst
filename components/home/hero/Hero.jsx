@@ -10,9 +10,9 @@ export default function Hero() {
 		<color args={[0, 0, 0]} attach="background" />
 		<PerspectiveCamera makeDefault position={[0, 0, 8]} />
 
-		<ambientLight />
-
 		<Content />
+
+		<ambientLight />
 
 		<OrbitControls
 			makeDefault
