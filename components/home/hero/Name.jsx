@@ -1,10 +1,17 @@
-import { Text } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei"
 
 export default function Name() {
+	const { nodes } = useGLTF("/models/name.glb")
+
 	return <>
-		<Text scale={[.8, .8, .8]} font="/fonts/tektur/static/Tektur-Regular.ttf">
-			Ernst Danielle B. Legaspi
+		<mesh
+			rotation-x={Math.PI / 2}
+			position={[-5, -.1, .3]}
+			geometry={nodes["Text"].geometry}
+		>
 			<meshBasicMaterial />
-		</Text>
+		</mesh>
 	</>
 }
+
+useGLTF.preload("/models/name.glb")
