@@ -40,7 +40,6 @@ export default function Wall() {
 		return <mesh ref={planeRef} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave} position={[(-planeWidth / 2) + (1.0 + x), (planeHeight / 2) - (1.0 + y), .01]}>
 			<planeGeometry args={[2, 2]} />
 			<meshBasicMaterial ref={matRef} transparent opacity={.1} color="#fff" />
-			{/* <meshBasicMaterial ref={matRef} transparent opacity={.013} color="#fff" /> */}
 		</mesh>
 	}
 

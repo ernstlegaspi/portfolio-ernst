@@ -1,10 +1,11 @@
 "use client"
 
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, PerspectiveCamera, ScrollControls } from "@react-three/drei"
+import { useEffect, useRef } from "react"
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
+import { usePageStore } from "@/hooks/page"
 
 import Content from "./Content"
-import { useEffect, useRef } from "react"
 import gsap from "gsap"
 
 // tasks
@@ -12,8 +13,10 @@ import gsap from "gsap"
 // 4. detect if scroll up or down
 
 export default function Hero() {
+	const { currentPage, setCurrentPage } = usePageStore()
 	const heroRef = useRef()
 	const skillsRef = useRef()
+	const tl = gsap.timeline()
 
 	let numScroll = 0
 	let userScrolled = false
@@ -35,13 +38,21 @@ export default function Hero() {
 				return
 			}
 
+			if(currentPage > 1) return
+
+			setCurrentPage(2)
+
 			gsap.to(heroRef.current.style, {
 				opacity: 0,
+				marginTop: "-100px",
 				duration: .3
 			})
 
-			gsap.to(skillsRef.current.style, {
+			tl.to(skillsRef.current.style, {
 				opacity: 1,
+				marginTop: "-100px",
+				duration: .3
+			}).to(skillsRef.current.style, {
 				marginTop: "0px",
 				duration: .3
 			})
@@ -52,7 +63,7 @@ export default function Hero() {
 		return () => {
 			window.removeEventListener("wheel", onWheel)
 		}
-	}, [])
+	}, [currentPage])
 
 	return <div className="w h relative overflow-hidden">
 		<div ref={heroRef} style={{ position: "absolute", top: 0, opacity: 1 }} className="w h">
@@ -67,9 +78,9 @@ export default function Hero() {
 					makeDefault
 					enableDamping
 					dampingFactor={0.03}
-					enablePan={false}
-					enableZoom={false}
-					enableRotate={false}
+					// enablePan={false}
+					// enableZoom={false}
+					// enableRotate={false}
 				/>
 			</Canvas>
 		</div>
