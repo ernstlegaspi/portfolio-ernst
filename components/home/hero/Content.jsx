@@ -1,11 +1,10 @@
-"use client"
-
+import { useFrame } from "@react-three/fiber"
 import { useEffect, useRef } from "react"
+import { MathUtils } from "three"
+
 import Name from "./Name"
 import ReflectionFloor from "./ReflectionFloor"
 import Wall from "./Wall"
-import { useFrame } from "@react-three/fiber"
-import { MathUtils } from "three"
 
 export default function Content() {
 	const ref = useRef()
