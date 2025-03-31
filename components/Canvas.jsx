@@ -6,7 +6,11 @@ import Content from "./Content"
 
 export default function CanvasComp() {
 	return <Canvas>
-		<PerspectiveCamera makeDefault position={[-2.9504296930208564, 16.15804234763166, 13.40389032298172]} />
+		<PerspectiveCamera
+			name="Main Camera"
+			makeDefault
+			position={[-2.9504296930208564, 16.15804234763166, 13.40389032298172]}
+		/>
 
 		<Content />
 
@@ -14,8 +18,8 @@ export default function CanvasComp() {
 			makeDefault
 			enableDamping
 			dampingFactor={.03}
-			enablePan={false}
-			enableRotate={false}
+			// enablePan={false}
+			// enableRotate={false}
 			enableZoom={false}
 		/>
 	</Canvas>

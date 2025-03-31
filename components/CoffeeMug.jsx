@@ -2,6 +2,7 @@ import { useLoader } from "@react-three/fiber"
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader"
 import { Mug } from "./Mug"
 import { useEffect, useRef, useState } from "react"
+import { useGrowingStore } from "@/hooks/growing"
 
 import CoffeeSmoke from "./CoffeeSmoke"
 import gsap from "gsap"
@@ -11,11 +12,34 @@ export default function CoffeeMug() {
 	const smokeRef = useRef()
 	const coffeeRef = useRef()
 	const coffeeSpillRef = useRef()
+	const containerRef = useRef()
 	const { nodes, materials } = useLoader(GLTFLoader, "/models/coffee.glb")
+	const { isGrowing, setIsGrowing } = useGrowingStore()
 	const [mugFell, setMugFell] = useState(false)
+	const [shouldSpillGrow, setShouldSpillGrow] = useState(false)
 
 	useEffect(() => {
 		const wheel = e => {
+			if(isGrowing) return
+
+			if(shouldSpillGrow && mugFell && containerRef.current) {
+				gsap.to(containerRef.current.scale, {
+					x: 55,
+					y: 55,
+					z: 55,
+					duration: 3
+				})
+
+				gsap.to(containerRef.current.position, {
+					x: 90,
+					duration: 3
+				})
+
+				setIsGrowing(true)
+
+				return
+			}
+			
 			smokeRef.current.scale.set(0, 0, 0)
 
 			gsap.to(coffeeGroupRef.current.rotation, {
@@ -30,8 +54,6 @@ export default function CoffeeMug() {
 					setMugFell(true)
 				}
 			})
-
-			
 		}
 
 		window.addEventListener("wheel", wheel)
@@ -39,7 +61,7 @@ export default function CoffeeMug() {
 		return () => {
 			window.removeEventListener("wheel", wheel)
 		}
-	}, [])
+	}, [isGrowing, shouldSpillGrow])
 
 	useEffect(() => {
 		if(!mugFell) return
@@ -61,11 +83,14 @@ export default function CoffeeMug() {
 		gsap.to(coffeeSpillRef.current.position, {
 			x: -2,
 			y: -.85,
-			duration: .5
+			duration: .5,
+			onComplete: () => {
+				setShouldSpillGrow(true)
+			}
 		})
 	}, [mugFell])
 
-	return <group>
+	return <group ref={containerRef}>
 		<group ref={coffeeGroupRef}>
 			<CoffeeSmoke
 				ref={smokeRef}
