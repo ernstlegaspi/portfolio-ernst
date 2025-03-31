@@ -27,12 +27,12 @@ export default function CoffeeMug() {
 					x: 55,
 					y: 55,
 					z: 55,
-					duration: 3
+					duration: 2
 				})
 
 				gsap.to(containerRef.current.position, {
 					x: 90,
-					duration: 3
+					duration: 2
 				})
 
 				setIsGrowing(true)

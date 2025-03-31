@@ -24,17 +24,17 @@ export default function Content() {
 	useFrame(() => {
 		if(!ref.current) return
 
-		// ref.current.rotation.y = MathUtils.lerp(
-		// 	ref.current.rotation.y,
-		// 	MathUtils.clamp(pointer.x, -.1, .1),
-		// 	.01
-		// )
+		ref.current.rotation.y = MathUtils.lerp(
+			ref.current.rotation.y,
+			MathUtils.clamp(pointer.x, -.1, .1),
+			.01
+		)
 
-		// ref.current.rotation.x = MathUtils.lerp(
-		// 	ref.current.rotation.x,
-		// 	MathUtils.clamp(pointer.y, -.1, .1),
-		// 	.005
-		// )
+		ref.current.rotation.x = MathUtils.lerp(
+			ref.current.rotation.x,
+			MathUtils.clamp(pointer.y, -.1, .1),
+			.005
+		)
 	})
 	
 	return <group ref={ref}>
