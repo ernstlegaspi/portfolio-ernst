@@ -18,8 +18,8 @@ export default function CanvasComp() {
 			makeDefault
 			enableDamping
 			dampingFactor={.03}
-			// enablePan={false}
-			// enableRotate={false}
+			enablePan={false}
+			enableRotate={false}
 			enableZoom={false}
 		/>
 	</Canvas>
