@@ -1,10 +1,13 @@
 import { useEffect, useRef } from "react"
-import CoffeeMug from "./CoffeeMug"
-import Floor from "./Floor"
 import { useFrame } from "@react-three/fiber"
 import { MathUtils } from "three"
+import { useGrowingStore } from "@/hooks/growing"
+
+import Floor from "./Floor"
+import CoffeeMug from "./CoffeeMug"
 
 export default function Content() {
+	const { isGrowing } = useGrowingStore()
 	const ref = useRef()
 	const pointer = { x: 0, y: 0 }
 
@@ -22,7 +25,7 @@ export default function Content() {
 	}, [])
 
 	useFrame(() => {
-		if(!ref.current) return
+		if(!ref.current || isGrowing) return
 
 		ref.current.rotation.y = MathUtils.lerp(
 			ref.current.rotation.y,
@@ -36,7 +39,7 @@ export default function Content() {
 			.005
 		)
 	})
-	
+
 	return <group ref={ref}>
 		<CoffeeMug />
 		<Floor />

@@ -13,8 +13,10 @@ export default function CoffeeMug() {
 	const coffeeRef = useRef()
 	const coffeeSpillRef = useRef()
 	const containerRef = useRef()
+
 	const { nodes, materials } = useLoader(GLTFLoader, "/models/coffee.glb")
-	const { isGrowing, setIsGrowing } = useGrowingStore()
+	const { isGrowing, setIsGrowing, setIsGrowingDone } = useGrowingStore()
+
 	const [mugFell, setMugFell] = useState(false)
 	const [shouldSpillGrow, setShouldSpillGrow] = useState(false)
 
@@ -32,7 +34,10 @@ export default function CoffeeMug() {
 
 				gsap.to(containerRef.current.position, {
 					x: 90,
-					duration: 2
+					duration: 2,
+					onComplete: () => {
+						setIsGrowingDone(true)
+					}
 				})
 
 				setIsGrowing(true)
