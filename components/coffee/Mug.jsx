@@ -1,6 +1,6 @@
 import { useGLTF } from '@react-three/drei'
 
-export function Mug(props) {
+export default function Mug(props) {
 	const { nodes } = useGLTF('/models/mug.glb')
 
 	return <group {...props} dispose={null}>

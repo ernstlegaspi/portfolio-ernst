@@ -1,10 +1,10 @@
 import { useLoader } from "@react-three/fiber"
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader"
-import { Mug } from "./Mug"
 import { useEffect, useRef, useState } from "react"
 import { useGrowingStore } from "@/hooks/growing"
 
 import CoffeeSmoke from "./CoffeeSmoke"
+import Mug from "./Mug"
 import gsap from "gsap"
 
 export default function CoffeeMug() {

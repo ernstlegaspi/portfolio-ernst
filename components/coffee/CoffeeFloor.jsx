@@ -6,7 +6,7 @@ import gsap from "gsap"
 const arr = new Array(40).fill(0)
 const tileSize = 10
 
-export default function Floor() {
+export default function CoffeeFloor() {
 	const { isGrowing } = useGrowingStore()
 
 	let x = 0

@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react"
 import { useGrowingStore } from "@/hooks/growing"
+import { useFrame } from "@react-three/fiber"
+import { MathUtils } from "three"
 
 import RoomModel from "./RoomModel"
 import gsap from "gsap"
 import RoomFloor from "./RoomFloor"
-import { useFrame } from "@react-three/fiber"
-import { MathUtils } from "three"
 
 export default function Room() {
 	const { isGrowing, isGrowingDone } = useGrowingStore()

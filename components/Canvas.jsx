@@ -4,9 +4,9 @@ import { Environment, OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useGrowingStore } from "@/hooks/growing"
 
-import Content from "./Content"
-import Room from "./Room"
+import CoffeeContent from "./coffee/CoffeeContent"
 import MainCamera from "./MainCamera"
+import Room from "./room/Room"
 
 export default function CanvasComp() {
 	const { isGrowing, isGrowingDone } = useGrowingStore()
@@ -23,7 +23,8 @@ export default function CanvasComp() {
 			<Environment preset="sunset" />
 
 			<Room />
-			{ isGrowingDone ? null : <Content /> }
+
+			{ isGrowingDone ? null : <CoffeeContent /> }
 
 			<OrbitControls
 				makeDefault
