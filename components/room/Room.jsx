@@ -3,7 +3,7 @@ import { useGrowingStore } from "@/hooks/growing"
 import { useFrame } from "@react-three/fiber"
 import { MathUtils } from "three"
 
-import RoomModel from "./RoomModel"
+import RoomModel from "./room-model/RoomModel"
 import gsap from "gsap"
 import RoomFloor from "./RoomFloor"
 
