@@ -25,6 +25,8 @@ export default function Room() {
 	}, [isGrowing])
 
 	useEffect(() => {
+		if(!isGrowingDone) return
+
 		const pointerMove = e => {
 			pointer.x = (e.clientX / window.innerWidth) * 2 - 1
 			pointer.y = - (e.clientY / window.innerHeight) * 2 + 1
@@ -35,14 +37,14 @@ export default function Room() {
 		return () => {
 			window.removeEventListener("pointermove", pointerMove)
 		}
-	}, [])
+	}, [isGrowingDone])
 
 	useFrame(() => {
 		if(!ref.current || !isGrowingDone) return
 
 		ref.current.rotation.y = MathUtils.lerp(
 			ref.current.rotation.y,
-			MathUtils.clamp(pointer.x, -.1, .1),
+			MathUtils.clamp(pointer.x, -.2, .2),
 			.003
 		)
 	})
