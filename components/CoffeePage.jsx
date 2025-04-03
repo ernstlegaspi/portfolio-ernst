@@ -1,0 +1,26 @@
+import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
+import Content from "./Content"
+
+export default function CoffeePage() {
+		return <Canvas>
+			<PerspectiveCamera
+				name="Main Camera"
+				makeDefault
+				position={[-2.9504296930208564, 16.15804234763166, 13.40389032298172]}
+			/>
+
+		<Environment preset="sunset" />
+
+		<Content />
+
+		<OrbitControls
+			makeDefault
+			enableDamping
+			dampingFactor={.03}
+			enablePan={false}
+			enableRotate={false}
+			enableZoom={false}
+		/>
+	</Canvas>
+}
