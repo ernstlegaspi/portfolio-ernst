@@ -10,30 +10,32 @@ import Room from "./room/Room"
 
 export default function CanvasComp() {
 	const { isGrowing, isGrowingDone } = useGrowingStore()
-	
-	return <div className={`${isGrowingDone ? "bg-[#794C22]" : "bg-light-brown"} h-[100vh]`}>
-		{
-			isGrowing ? null
-			: <p className="absolute bottom-3 left-[50%] translate-x-[-50%] text-white">Scroll to continue</p>
-		}
 
-		<Canvas>
-			<MainCamera />
+	return <div className="h-[100vh] relative">
+		<div className={`${isGrowingDone ? "bg-[#794C22]" : "bg-light-brown"} h`}>
+			{
+				isGrowing ? null
+				: <p className="absolute bottom-3 left-[50%] translate-x-[-50%] text-white">Scroll to continue</p>
+			}
 
-			<Environment preset="sunset" />
+			<Canvas shadows>
+				<MainCamera />
 
-			<Room />
+				<Environment preset="sunset" />
 
-			{ isGrowingDone ? null : <CoffeeContent /> }
+				<Room />
 
-			<OrbitControls
-				makeDefault
-				enableDamping
-				dampingFactor={.03}
-				enablePan={false}
-				enableRotate={false}
-				enableZoom={false}
-			/>
-		</Canvas>
+				{ isGrowingDone ? null : <CoffeeContent /> }
+
+				<OrbitControls
+					makeDefault
+					enableDamping
+					dampingFactor={.03}
+					enablePan={false}
+					enableRotate={false}
+					enableZoom={false}
+				/>
+			</Canvas>
+		</div>
 	</div>
 }
