@@ -7,11 +7,16 @@ import { useGrowingStore } from "@/hooks/growing"
 import CoffeeContent from "./coffee/CoffeeContent"
 import MainCamera from "./MainCamera"
 import Room from "./room/Room"
+import Modal from "./modals/Modal"
+import { useModalStore } from "@/hooks/modal"
 
 export default function CanvasComp() {
+	const { isModalActive } = useModalStore()
 	const { isGrowing, isGrowingDone } = useGrowingStore()
 
 	return <div className="h-[100vh] relative">
+		{ isModalActive ? <Modal /> : null }
+
 		<div className={`${isGrowingDone ? "bg-[#794C22]" : "bg-light-brown"} h`}>
 			{
 				isGrowing ? null

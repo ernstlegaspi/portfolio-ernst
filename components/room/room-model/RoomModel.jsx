@@ -9,6 +9,9 @@ import Laptop from './Laptop'
 import Chairs from './Chairs'
 import PC from './PC'
 import Clock from './Clock'
+import Experience from './Experience'
+import Skills from './Skills'
+import Projects from './Projects'
 
 export default function RoomModel(props) {
 	const { nodes, materials } = useGLTF('/models/room.glb')
@@ -33,6 +36,12 @@ export default function RoomModel(props) {
 
 				<Clock nodes={nodes} materials={materials} />
 
+				<Experience nodes={nodes} materials={materials} />
+
+				<Skills nodes={nodes} materials={materials} />
+
+				<Projects nodes={nodes} materials={materials} />
+
 				{/* <group name="Empty" position={[-0.358, 8.239, -3.923]} rotation={[Math.PI / 2, 0, 0]} scale={0.193} />
 				<group name="Empty001" position={[2.129, 7.184, -4.045]} rotation={[Math.PI / 2, 0, 0]} scale={[0.267, 0.267, 0.226]} />
 				<group name="Empty002" position={[3.517, 7.815, -4.045]} rotation={[Math.PI / 2, 0, 0]} scale={0.229} />
@@ -52,18 +61,12 @@ export default function RoomModel(props) {
 				<mesh name="Cube003" geometry={nodes.Cube003.geometry} material={materials.table} position={[-1.385, 3.266, -3.178]} rotation={[0, Math.PI / 2, 0]} scale={[1, 0.1, 2.002]} />
 				<mesh name="Cube085" geometry={nodes.Cube085.geometry} material={materials['Material.026']} position={[1.583, 7.012, -4.032]} scale={[2.639, 1.974, 0.09]} />
 				<mesh name="Cube086" geometry={nodes.Cube086.geometry} material={materials.table} position={[-7.261, 10.469, -4.473]} scale={[1.61, 0.066, 0.066]} />
-				<mesh name="experience_hover" geometry={nodes.experience_hover.geometry} material={materials.Material} position={[-8.76, 9.107, -4.48]} scale={[1.472, 0.45, 0.029]} />
 				<mesh name="floor002" geometry={nodes.floor002.geometry} material={materials.black} position={[-8.66, 10.403, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.199, 0.003]} />
 				<mesh name="floor004" geometry={nodes.floor004.geometry} material={materials.black} position={[-5.939, 10.403, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.199, 0.003]} />
-				<mesh name="experience_text" geometry={nodes.experience_text.geometry} material={nodes.experience_text.material} position={[-8.442, 9.377, -4.453]} rotation={[Math.PI / 2, 0, 0]} scale={0.541} />
-				<mesh name="skills_hover" geometry={nodes.skills_hover.geometry} material={materials.Material} position={[-8.76, 7.81, -4.48]} rotation={[0, 0, -0.027]} scale={[1.472, 0.45, 0.029]} />
 				<mesh name="floor001" geometry={nodes.floor001.geometry} material={materials.black} position={[-8.66, 9.107, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.201, 0.003]} />
 				<mesh name="floor005" geometry={nodes.floor005.geometry} material={materials.black} position={[-5.939, 9.107, -4.48]} rotation={[-Math.PI, 0, 0.081]} scale={[0.011, 0.244, 0.003]} />
-				<mesh name="skills_text" geometry={nodes.skills_text.geometry} material={nodes.skills_text.material} position={[-7.803, 8.056, -4.453]} rotation={[Math.PI / 2, -0.037, 0]} scale={0.541} />
-				<mesh name="projects_hover" geometry={nodes.projects_hover.geometry} material={materials.Material} position={[-8.76, 6.403, -4.48]} rotation={[0, 0, 0.062]} scale={[1.472, 0.45, 0.029]} />
 				<mesh name="floor006" geometry={nodes.floor006.geometry} material={materials.black} position={[-8.66, 7.81, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.25, 0.003]} />
 				<mesh name="floor007" geometry={nodes.floor007.geometry} material={materials.black} position={[-6.006, 7.729, -4.48]} rotation={[-Math.PI, 0, -0.239]} scale={[0.011, 0.131, 0.003]} />
-				<mesh name="projects_text" geometry={nodes.projects_text.geometry} material={nodes.projects_text.material} position={[-8.145, 6.705, -4.453]} rotation={[Math.PI / 2, 0.11, 0]} scale={0.541} />
 			</group>
 		</group>
 	)
