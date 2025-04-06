@@ -42,14 +42,6 @@ canvas {
 	overflow-y: scroll
 }
 
-::-webkit-scrollbar {
-	width: 0
-}
-
-::-webkit-scrollbar-thumb {
-	width: 0
-}
-
-::-webkit-scrollbar-track {
-	width: 0
+.bshadow {
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, .2)
 }

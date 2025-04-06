@@ -24,6 +24,9 @@ export default function MainCamera() {
 		if(!cameraRef.current || !isGrowingDone) return
 
 		cameraRef.current.lookAt(0, 7.2, 0)
+
+		// cameraRef.current.position.x += .003
+		// cameraRef.current.lookAt(cameraRef.current.position.x, 0, 0)
 	})
 
 	return <PerspectiveCamera

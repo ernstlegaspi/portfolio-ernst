@@ -3,12 +3,12 @@
 import { Environment, OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useGrowingStore } from "@/hooks/growing"
+import { useModalStore } from "@/hooks/modal"
 
 import CoffeeContent from "./coffee/CoffeeContent"
 import MainCamera from "./MainCamera"
 import Room from "./room/Room"
 import Modal from "./modals/Modal"
-import { useModalStore } from "@/hooks/modal"
 
 export default function CanvasComp() {
 	const { isModalActive } = useModalStore()
