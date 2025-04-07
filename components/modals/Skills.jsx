@@ -30,7 +30,6 @@ export default function Skills() {
 
 		<Label label="Front End" noMarginTop />
 		<SkillsGrid skills={frontendSkills} />
-		
 
 		<Label label="Back End" />
 		<SkillsGrid skills={backendSkills} />

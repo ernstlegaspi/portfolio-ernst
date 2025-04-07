@@ -1,6 +1,7 @@
 import { useModalStore } from "@/hooks/modal"
-import gsap from "gsap"
 import { useRef } from "react"
+
+import gsap from "gsap"
 
 export default function Skills({ nodes, materials }) {
 	const { setActiveModal, setIsModalActive } = useModalStore()
