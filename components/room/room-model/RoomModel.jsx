@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 import Door from './Door'
@@ -15,11 +15,26 @@ import Projects from './Projects'
 
 export default function RoomModel(props) {
 	const { nodes, materials } = useGLTF('/models/room.glb')
+	let w = window.innerWidth
 	const group = useRef()
+	const [responsiveScale, setResponsiveScale] = useState(w > 900 && w < 1171 ? [.85, .85, .85] : w < 900 ? [.6, .6, .6] : [1, 1, 1])
+
+	useEffect(() => {
+		const resize = () => {
+			w = window.innerWidth
+			setResponsiveScale(w > 900 && w < 1171 ? [.85, .85, .85] : w < 900 ? [.6, .6, .6] : [1, 1, 1])
+		}
+
+		window.addEventListener("resize", resize)
+
+		return () => {
+			window.removeEventListener("resize", resize)
+		}
+	}, [])
 
 	return (
 		<group ref={group} {...props} dispose={null}>
-			<group name="Scene">
+			<group name="Scene" scale={responsiveScale}>
 				<Shelves nodes={nodes} materials={materials} />
 
 				<Carpet nodes={nodes} materials={materials} />
@@ -40,7 +55,7 @@ export default function RoomModel(props) {
 
 				<Skills nodes={nodes} materials={materials} />
 
-				<Projects nodes={nodes} materials={materials} />
+				{/* <Projects nodes={nodes} materials={materials} /> */}
 
 				{/* <group name="Empty" position={[-0.358, 8.239, -3.923]} rotation={[Math.PI / 2, 0, 0]} scale={0.193} />
 				<group name="Empty001" position={[2.129, 7.184, -4.045]} rotation={[Math.PI / 2, 0, 0]} scale={[0.267, 0.267, 0.226]} />
@@ -65,11 +80,11 @@ export default function RoomModel(props) {
 				<mesh name="floor004" geometry={nodes.floor004.geometry} material={materials.black} position={[-5.939, 10.403, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.199, 0.003]} />
 				<mesh name="floor001" geometry={nodes.floor001.geometry} material={materials.black} position={[-8.66, 9.107, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.201, 0.003]} />
 				<mesh name="floor005" geometry={nodes.floor005.geometry} material={materials.black} position={[-5.939, 9.107, -4.48]} rotation={[-Math.PI, 0, 0.081]} scale={[0.011, 0.244, 0.003]} />
-				<mesh name="floor006" geometry={nodes.floor006.geometry} material={materials.black} position={[-8.66, 7.81, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.25, 0.003]} />
-				<mesh name="floor007" geometry={nodes.floor007.geometry} material={materials.black} position={[-6.006, 7.729, -4.48]} rotation={[-Math.PI, 0, -0.239]} scale={[0.011, 0.131, 0.003]} />
+				{/* <mesh name="floor006" geometry={nodes.floor006.geometry} material={materials.black} position={[-8.66, 7.81, -4.48]} rotation={[-Math.PI, 0, 0]} scale={[0.011, 0.25, 0.003]} />
+				<mesh name="floor007" geometry={nodes.floor007.geometry} material={materials.black} position={[-6.006, 7.729, -4.48]} rotation={[-Math.PI, 0, -0.239]} scale={[0.011, 0.131, 0.003]} /> */}
 			</group>
 		</group>
 	)
 }
 
-// useGLTF.preload('/models/room.glb')
+useGLTF.preload('/models/room.glb')
