@@ -16,8 +16,11 @@ export default function CanvasComp() {
 	const { isModalActive } = useModalStore()
 	const { isGrowing, isGrowingDone } = useGrowingStore()
 	const [isMobile, setIsMobile] = useState(false)
+	const [innerWidth, setInnerWidth] = useState(null)
 
 	useEffect(() => {
+		setInnerWidth(window.innerWidth)
+
 		const resize = () => {
 			setIsMobile(window.innerWidth < 771)
 		}
@@ -29,7 +32,7 @@ export default function CanvasComp() {
 		}
 	}, [])
 
-	if(isMobile || window.innerWidth < 771) return <div className="px-4 text-center w h-[100vh] bg-light-brown flex items-center justify-center font-bold text-white flex-col text-[20px]">
+	if(isMobile || innerWidth < 771) return <div className="px-4 text-center w h-[100vh] bg-light-brown flex items-center justify-center font-bold text-white flex-col text-[20px]">
 		<p>This app is best viewed on a larger screen.</p>
 		<p>Please use a tablet or desktop for the best experience.</p>
 	</div>
