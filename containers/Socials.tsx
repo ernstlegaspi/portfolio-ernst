@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { IconType } from 'react-icons'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { FaPhone } from 'react-icons/fa6'
@@ -13,9 +12,9 @@ type SocialProps = {
 
 export default function Socials() {
   const Social = ({ label, link, icon: Icon, size = 22 }: SocialProps) => {
-    return <Link aria-label={label} href={link} target='_blank' rel='noreferrer'>
+    return <a aria-label={label} href={link} target='_blank' rel='noreferrer'>
       <Icon size={size} />
-    </Link>
+    </a>
   }
 
   return <>
