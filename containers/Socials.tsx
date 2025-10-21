@@ -21,7 +21,7 @@ export default function Socials() {
     <div className='w-full h-[4px] bg-black/30 mt-2' />
     <div className='w-full h-[2px] mt-1 bg-black/30 mb-2' />
 
-    <div className='gap-10 flex justify-center text-tb'>
+    <div className='gap-10 flex justify-center text-tb relative z-[100]'>
       <Social
         label='View my projects on github.com/ernstlegaspi'
         link='https://github.com/ernstlegaspi'
